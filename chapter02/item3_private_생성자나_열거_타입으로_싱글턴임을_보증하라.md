@@ -24,7 +24,7 @@ public class Elvis {
     public static final Elvis INSTANCE = new Elvis();
 
     private Elvis() {
-        throw new AssertionError("CAN'T MAKE INSTANCE");
+        // 이미 인스턴스가 존재할 경우 : throw new AssertionError("CAN'T MAKE INSTANCE");
     }
 
     public void leaveTheBuilding() {
