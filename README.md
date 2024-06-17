@@ -9,3 +9,4 @@
 |  3   | private 생성자나 열거 타입으로 싱글턴임을 보증하라 | [README](chapter02/item3_private_생성자나_열거_타입으로_싱글턴임을_보증하라.md) |
 |  4   | 인스턴스화를 막으려거든 private 생성자를 사용하라  | [README](chapter02/item4_인스턴스화를_막으려거든_private_생성자를_사용하라.md)  |
 |  5   |  자원을 직접 명시하지 말고 의존 객체 주입을 사용하라  |  [README](chapter02/item5_자원을_직접_명시하지_말고_의존_객체_주입을_사용하라.md)  |
+|  6   |         불필요한 객체 생성을 피하라         |         [README](chapter02/item6_불필요한_객체_생성을_피하라.md)         |
