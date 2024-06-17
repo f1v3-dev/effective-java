@@ -106,9 +106,6 @@ cocaCola.setSodium(35);
 - 대표적인 예시가 자바스크립트에서 `Object.freeze()`를 사용하는 것이다.
 - 하지만, 개발자가 freeze 메서드를 확실히 호출해줬는지 보증할 방법이 없어 런타임 오류에 취약하다는 문제가 여전히 존재한다.
 
-> [[TOAST UI] Object.freeze vs Object.seal - 불변성과 관련된 두 가지 네이티브 메서드](https://ui.toast.com/posts/ko_20220420)
-
-
 ## 빌더 패턴 (Builder Pattern)
 
 #### 점층적 생성자 패턴의 안전성과 자바빈즈 패턴의 가독성을 겸비 
