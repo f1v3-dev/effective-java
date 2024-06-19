@@ -11,3 +11,4 @@
 |  5   |  자원을 직접 명시하지 말고 의존 객체 주입을 사용하라  |  [README](chapter02/item5_자원을_직접_명시하지_말고_의존_객체_주입을_사용하라.md)  |
 |  6   |         불필요한 객체 생성을 피하라         |         [README](chapter02/item6_불필요한_객체_생성을_피하라.md)         |
 |  7   |         다 쓴 객체 참조를 해제하라         |         [README](chapter02/item7_다_쓴_객체_참조를_해제하라.md)         |
+|  8   |   finalizer와 cleaner 사용을 피하라    |   [README](chapter02/item8_finalizer와_cleaner_사용을_피하라.md)    |
