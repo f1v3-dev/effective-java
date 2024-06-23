@@ -13,3 +13,10 @@
 |  7   |             다 쓴 객체 참조를 해제하라             |             [README](chapter02/item7_다_쓴_객체_참조를_해제하라.md)             |
 |  8   |       finalizer와 cleaner 사용을 피하라        |       [README](chapter02/item8_finalizer와_cleaner_사용을_피하라.md)        |
 |  9   | try-finally보다는 try-with-resources를 사용하라 | [README](chapter02/item9_try-finally보다는_try-with-resources를_사용하라.md) |
+
+## 3장. 모든 객체의 공통 메서드
+
+| Item |                   내용                    |                                  정리                                  |
+|:----:|:---------------------------------------:|:--------------------------------------------------------------------:|
+|  1   |         생성자 대신 정적 팩터리 메서드를 고려하라         |         [README](chapter02/item1_생성자_대신_정적_팩터리_메서드를_고려하라.md)         |
+
