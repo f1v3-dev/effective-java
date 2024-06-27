@@ -115,3 +115,117 @@ str.equals(cis); // false
 - 한 쪽에서는 true, 한 쪽에서는 false가 나오는 기이한 현상이 발생한다.
 - List<CaseInsensitiveString>에 cis를 추가한 다음 contains를 호출하여도 어떻게 반응할지 모른다.
 
+#### 추이성
+- a == b, b == c이면 a == c여야 한다는 뜻
+- 아래의 `Point` 클래스를 예시로 한 번 살펴보자
+
+_Point.class
+```java
+public class Point {
+    private final int x;
+    private final int y;
+    
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+    @Override
+  public boolean equals(Object o) {
+        if (!(o instanceof Point)) {
+            return false;
+        }
+        
+        Point p = (Point) o;
+        return p.x == x && p.y == y;
+    }
+}
+```
+
+- 위의 코드를 확장해서 점에 색상을 더해보자.
+
+_ColorPoint.class
+```java
+public class ColorPoint extends Point {
+    private final Color color;
+    
+    public ColorPoint(int x, int y, Color color) {
+        super(x, y);
+        this.color = color;
+    }
+    
+    // ...
+}
+```
+
+- equals 메서드를 그대로 둘 경우, Point의 equals를 사용하게 되어 색상 정보는 무시한 채 결과 값을 반환하게 될 것이다.
+- 이러한 경우, 추이성을 만족시키지 못하게 된다.
+
+_잘못된 코드 - 대칭성 위배_
+```java
+@Override
+public boolean equals(Object o) {
+    if (!(o instanceof ColorPoint)) {
+        return false;
+    }
+    return super.equals(o) && ((ColorPoint) o).color == color;
+}
+```
+
+- Point를 ColorPoint에 비교한 결과와 그 둘을 바꿔 비교한 결과가 다를 수 있음.
+
+```java
+Point p = new Point(1, 2);
+ColorPoint cp = new ColorPoint(1, 2, Color.RED);
+```
+
+- p.equals(cp) == true, cp.equals(p) == false
+- `ColorPoint.equals`가 Point와 비교할 때 색상을 무시하면 해결이 될까?
+
+_잘못된 코드2 - 추이성 위배_
+```java
+@Override
+public boolean equals(Object o) {
+    if (!(o instanceof Point)) {
+        return false;
+    }
+    
+    // o가 일반 Point면 색상 무시 후 비교
+    if (!(o instanceof ColorPoint)) {
+        return o.euqlas(this);
+    }
+    
+    // o가 ColorPoint라면 색상까지 비교
+    return super.equals(o) && ((ColorPoint) o).color == color;
+}
+```
+
+- 위 방식에서 대칭성은 유지했지만, 추이성은 위배되고 있다.
+
+```java
+ColorPoint p1 = new ColorPoint(1, 2, Color.RED);
+Point p2 = new Point(1, 2);
+ColorPoint p3 = new ColorPoint(1, 2, Color.BLUE);
+
+// p1 == p2, p2 == p3 이지만 p1 != p3
+```
+
+- 객체 지향 언어의 동치관계에서 나타나는 근본적인 문제로, 무한 재귀에 빠질 위험도 존재함.
+- **구체 클래스를 확장해 새로운 값을 추가하면서 equals 규약을 만족시킬 방법은 존재하지 않는다는 점을 기억하자.**
+
+_리스코프 치환 원칙 위배 코드_
+```java
+@Override
+public boolean equals(Object o) {
+    if (o == null || o.getClass() != getClass()) {
+        return false;
+    }
+    
+    Point p = (Point) o;
+    return p.x == x && p.y == y;
+}
+```
+
+- 위의 코드는 같은 구현 클래스에서만 `true`를 반환한다.
+- 하위 클래스에서 `equals`를 사용할 수 없게되니 리스코프 치환 원칙을 위배하게 된다.
+
