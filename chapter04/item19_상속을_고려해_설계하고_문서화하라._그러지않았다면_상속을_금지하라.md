@@ -6,7 +6,7 @@
 - 어떤 순서로 호출하는지, 각각의 호출 결과가 이어지는 처리에 어떤 영향을 주는지도 담아야 한다.
 
 _AbstracCollection.java_
-![Abstract_Collection.png](Abstract_Collection.png)
+![Abstract_Collection.png](img/Abstract_Collection.png)
 
 - API 문서에 `@implSpec` 태그를 통해 "Implementation Requirements"를 생성할 수 있다.
 - 이는, 그 메서드의 내부 동작 방식을 설명하는 곳이다.
