@@ -16,6 +16,14 @@ public class Item28 {
         ol.add("타입이 달라 넣을 수가 없어요.");
     }
 
+    public void genericArray() {
+        List<String>[] stringList = new List<String>[1];
+        List<Integer> intList = List.of(42);
+        Object[] objects = stringList;
+        objects[0] = intList;
+        String s = stringList[0].get(0);
+    }
+
     public static void main(String[] args) {
         covariant();
         invariant();
